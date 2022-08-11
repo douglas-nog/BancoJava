@@ -21,12 +21,12 @@ public class Conta {
 		saldo += valor;
 	}
 	
-	public boolean retirar(double valor) {
+	public void retirar(double valor) {
 		if (saldo >= valor) {
 			saldo -= valor; 
-			return true;
+			System.out.println("Saque realizado com Sucesso!");
 		}else {
-			return false;
+			System.out.println("Saldo insuficiente");
 		}
 		
 	}
