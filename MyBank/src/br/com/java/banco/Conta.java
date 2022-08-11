@@ -28,7 +28,16 @@ public class Conta {
 		}else {
 			System.out.println("Saldo insuficiente");
 		}
-		
+	}
+	
+	public boolean tranferir(double valor, Conta destino) {
+		if (this.saldo >= valor) {
+			this.saldo -= valor;
+			destino.depositar(valor);
+			return true;
+		}else {
+			return false;	
+		}
 	}
 	
 	public double verificarSaldo() {

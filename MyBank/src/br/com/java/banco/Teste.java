@@ -18,5 +18,9 @@ public class Teste {
 		poupanca.depositar(5000);
 		poupanca.retirar(600);
 		System.out.println(poupanca.verificarSaldo());
+		
+		poupanca.tranferir(500, cc);
+		System.out.println(poupanca.saldo);
+		System.out.println(cc.saldo);
 	}
 }
