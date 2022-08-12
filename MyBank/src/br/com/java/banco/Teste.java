@@ -3,7 +3,12 @@ package br.com.java.banco;
 public class Teste {
 	
 	public static void main(String[] args) {
-	
+		
+		Cliente cliente1 = new Cliente();
+		cliente1.nome = "Douglas Nogueira";
+		cliente1.cpf = "456.789.123-11";
+		
+		
 		Conta cc = new Conta();
 		cc.agencia = 1234;
 		cc.numero = 147258;
@@ -17,6 +22,9 @@ public class Teste {
 		
 		Conta poupanca = new Conta(4567, 369258, 500);
 		
+		//associa a conta poupança ao cliente 1  
+		poupanca.cliente = cliente1;
+		
 		System.out.println("Saldo inicial poupança R$" + poupanca.saldo);
 		poupanca.depositar(5000);
 		poupanca.retirar(600);
@@ -26,5 +34,7 @@ public class Teste {
 		poupanca.tranferir(500, cc);
 		System.out.println("Saldo poupança após transferência R$" + poupanca.saldo);
 		System.out.println("Saldo CC após tranferência R$" + cc.saldo);
+		
+		System.out.println(poupanca.cliente.nome);
 	}
 }
