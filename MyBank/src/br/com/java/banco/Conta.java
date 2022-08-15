@@ -1,31 +1,39 @@
 package br.com.java.banco;
+
+import java.io.Serializable;
+
 /**
  * Classe que abstrai uma Conta Bancária
- * @author dougl
- *@version 1.0<h3></h3>*/
+ * @author Douglas Nogueira
+ * @version 1.0*/
  
-public class Conta {
+public class Conta implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/*
 	 * Número da agência
 	 */
-	int agencia;
+	private int agencia;
 	/**
 	 * Número da conta
 	 */
-	int numero;
+	private int numero;
 	/**
 	 * Saldo da conta
 	 */
-	double saldo;
+	private double saldo;
 	/**
 	 * Chamada para a Classe Cliente 
 	 */
-	Cliente cliente;
+	private Cliente titular;
 	
 	/**
 	 * Método para criação default 
 	 */
-	public Conta() {	
+	public Conta() {
+		
 	}
 	
 	/**
@@ -39,7 +47,7 @@ public class Conta {
 		this.numero = numero;
 		this.saldo = saldo;
 	}
-
+		
 	/**
 	 * Acrescenta saldo à conta 
 	 * @param valor que será depositado 
@@ -55,7 +63,7 @@ public class Conta {
 	 */
 	public boolean retirar(double valor) {
 		if (saldo >= valor) {
-			saldo -= valor;
+			this.saldo -= valor;
 			return true;
 		}else {
 			System.out.println("Saldo insuficiente para saque.");
@@ -74,15 +82,45 @@ public class Conta {
 			this.saldo -= valor;
 			destino.depositar(valor);
 			return true;
-		}else {
-			return false;	
+		}else{
+			return false;
 		}
 	}
-	/**
-	 * Consulta saldo atual da Conta 
-	 * @return Valor do saldo atual 
-	 */
-	public double verificarSaldo() {
-		return saldo;
+	
+	public double getSaldo() {
+		return this.saldo;
 	}
+
+	public int getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(int agencia) {
+		if (numero <= 0) {
+			System.out.println("O número de conta não pode ser negativo!");
+			return;
+		}
+		this.agencia = agencia;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		if (numero <= 0) {
+			System.out.println("O número de conta não pode ser negativo!");
+			return;
+		}
+		this.numero = numero;
+	}
+
+	public Cliente getCliente() {
+		return titular;
+	}
+
+	public void setCliente(Cliente titular) {
+		this.titular = titular;
+	}
+
 }
